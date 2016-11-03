@@ -21,7 +21,6 @@
     "php": ">= 5.4",
     "nette/application": "~2.4",
     "nette/di": "~2.4",
-    "nette/di": "~2.4",
     "latte/latte": "^2.4"
   },
   "require-dev": {
