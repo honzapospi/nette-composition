@@ -5,6 +5,7 @@
  */
 
 namespace JP\Composition\UI;
+use Nette\Localization\ITranslator;
 
 /**
  * Control
@@ -20,14 +21,46 @@ class Control extends \Nette\Application\UI\Control {
 	 */
 	private $templateControl;
 
+	/**
+	 * @var ITranslator
+	 */
+	private $translator;
+
+	/**
+	 * @param ITranslator $translator
+	 */
+	public function setTranslator(ITranslator $translator){
+		$this->translator = $translator;
+	}
+
+	/**
+	 * @param $message
+	 * @param null $args
+	 * @param null $count
+	 * @return int
+	 */
+	protected function translate($message, $args = null, $count = null){
+		$return = $this->translator ? $this->translator->translate($message) : $message;
+		return vprintf($return, is_array($args) ? $args : array($args));
+	}
+
+	/**
+	 * @param ITemplateControl $templateControl
+	 */
 	public function setTemplateControl(ITemplateControl $templateControl){
 		$this->templateControl = $templateControl;
 	}
 
+	/**
+	 * @param IControlConfigurator $controlConfigurator
+	 */
 	public function setupConfigurator(IControlConfigurator $controlConfigurator){
 		$controlConfigurator->configure($this);
 	}
 
+	/**
+	 * Render control
+	 */
 	public function render() {
 		$template = $this->getTemplate();
 		$this->onBeforeRender($this);
