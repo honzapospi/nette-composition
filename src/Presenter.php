@@ -62,6 +62,17 @@ abstract class Presenter extends \Nette\Application\UI\Presenter {
 	}
 
 	/**
+	 * @param $message
+	 * @param null $args
+	 * @param null $count
+	 * @return int
+	 */
+	protected function translate($message, $args = null, $count = null){
+		$return = $this->translator ? $this->translator->translate($message) : $message;
+		return vprintf($return, is_array($args) ? $args : array($args));
+	}
+
+	/**
 	 * @param $name
 	 * @return \Nette\ComponentModel\IComponent
 	 */
