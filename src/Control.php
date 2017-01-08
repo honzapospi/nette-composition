@@ -31,6 +31,9 @@ class Control extends \Nette\Application\UI\Control {
 	 */
 	public function setTranslator(ITranslator $translator){
 		$this->translator = $translator;
+		$this->onBeforeRender[] = function($control, $template){
+			$template->setTranslator($this->translator);
+		};
 	}
 
 	/**
@@ -63,7 +66,7 @@ class Control extends \Nette\Application\UI\Control {
 	 */
 	public function render() {
 		$template = $this->getTemplate();
-		$this->onBeforeRender($this);
+		$this->onBeforeRender($this, $template);
 		$this->beforeRender();
 		if(!$template->getFile() && $this->templateControl)
 			$template->setFile($this->templateControl->formatTemplateFile($this));

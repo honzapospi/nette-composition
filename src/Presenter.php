@@ -44,6 +44,9 @@ abstract class Presenter extends \Nette\Application\UI\Presenter {
 	 */
 	public function setTranslator(ITranslator $translator){
 		$this->translator = $translator;
+		$this->onBeforeRender[] = function($control, $template){
+			$template->setTranslator($this->translator);
+		};
 	}
 
 	/**
@@ -88,7 +91,7 @@ abstract class Presenter extends \Nette\Application\UI\Presenter {
 	 */
 	protected function beforeRender(){
 		parent::beforeRender();
-		$this->onBeforeRender($this);
+		$this->onBeforeRender($this, $this->template);
 		if($this->layoutControl)
 			$this->layoutControl->setupLayout($this->template, $this);
 	}
