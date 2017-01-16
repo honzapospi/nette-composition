@@ -44,7 +44,8 @@ class Control extends \Nette\Application\UI\Control {
 	 */
 	protected function translate($message, $args = null, $count = null){
 		$return = $this->translator ? $this->translator->translate($message) : $message;
-		return vprintf($return, is_array($args) ? $args : array($args));
+		$return = vsprintf($return, is_array($args) ? $args : array($args));
+		return $return;
 	}
 
 	/**
