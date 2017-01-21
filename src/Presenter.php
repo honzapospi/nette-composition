@@ -126,4 +126,11 @@ abstract class Presenter extends \Nette\Application\UI\Presenter {
 		return parent::formatLayoutTemplateFiles();
 	}
 
+	public function flashMessage($message, $type = 'info'){
+		$args = func_get_args();
+		array_shift($args);
+		array_shift($args);
+		parent::flashMessage($this->translate($message, $args ? $args : null), $type = 'info');
+	}
+
 }
