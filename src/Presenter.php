@@ -130,7 +130,7 @@ abstract class Presenter extends \Nette\Application\UI\Presenter {
 		$args = func_get_args();
 		array_shift($args);
 		array_shift($args);
-		parent::flashMessage($this->translate($message, $args ? $args : null));
+		parent::flashMessage($this->translate($message, $args ? $args : null), $type);
 	}
 
 }
