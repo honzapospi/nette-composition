@@ -6,6 +6,8 @@
 
 namespace JP\Composition\UI;
 
+use Nette;
+
 /**
  * IControlConfigurator
  * @author Jan Pospisil
@@ -13,6 +15,6 @@ namespace JP\Composition\UI;
 
 interface IControlConfigurator  {
 
-	public function configure(Control $control);
+	public function configure(Nette\Application\UI\Control $control);
 	
 }
