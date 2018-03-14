@@ -5,7 +5,6 @@
  */
 
 namespace JP\Composition\UI;
-use Nette\Application\UI\Control;
 
 /**
  * IControlConfigurator
