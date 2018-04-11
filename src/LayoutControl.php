@@ -6,13 +6,15 @@
 
 namespace JP\Composition\UI;
 use Nette\ComponentModel\IComponent;
+use Nette\SmartObject;
 
 /**
  * Layoutcontrol
  * @author Jan Pospisil
  */
 
-abstract class LayoutControl extends \Nette\Object {
+abstract class LayoutControl {
+	use SmartObject;
 
 	/**
 	 * Component factory. Delegates the creation of components to a createComponent<Name> method.
