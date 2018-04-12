@@ -14,7 +14,6 @@ use Nette\Localization\ITranslator;
 
 abstract class Presenter extends \Nette\Application\UI\Presenter {
 
-	public $onStartup;
 	public $onBeforeRender;
 	public $onAfterRender;
 	private $layoutControl;
@@ -54,14 +53,6 @@ abstract class Presenter extends \Nette\Application\UI\Presenter {
 	 */
 	public function setLayoutControl(ILayoutControl $layoutControl){
 		$this->layoutControl = $layoutControl;
-	}
-
-	/**
-	 * @return void
-	 */
-	protected function startup(){
-		parent::startup();
-		$this->onStartup($this);
 	}
 
 	/**
