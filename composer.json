@@ -14,13 +14,10 @@
     ]
   },
   "require": {
-    "php": ">= 7.0",
+    "php": ">= 7.1",
     "nette/application": "~2.4",
     "nette/di": "~2.4",
     "latte/latte": "^2.4"
-  },
-  "require-dev": {
-    "nette/tester": "~1.4"
-  },
+  }
   "minimum-stability": "dev"
 }
